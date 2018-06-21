@@ -1,0 +1,14 @@
+.l1,.l2,.l3{
+    width: 100%;
+    height: 40pt;
+    display: flex;
+}
+.l1 li,.l2 li,.l3 li{
+   list-style: none;
+    text-align: center;
+    line-height: 40pt;
+    width: 100pt;
+    height: 40pt;
+    background: red;
+    margin: 0 1pt;
+}

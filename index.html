@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul class="l1">
+            <li v-for="item in arrs" @click="showSon(item.contentArrs)">{{item.text}}
+
+            </li>
+        </ul>
+        <ul class="l2">
+            <li v-for="item in arrs2" @click="showSonSon(item.contentArrs)">{{item.text}}</li>
+        </ul>
+        <ul class="l3">
+            <li v-for="item in arrs3">{{item.text}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            arrs: [
+                {
+                    id: 1,
+                    text: 1111,
+                    contentArrs: [
+                        {
+                            id: 11,
+                            text: "id1 的 第二层",
+                            contentArrs: [
+                                {
+                                    id: 111,
+                                    text: "id1 的 id11 第3层",
+                                }, {
+                                    id: 112,
+                                    text: "id1 的 id11 第3层",
+                                }, {
+                                    id: 113,
+                                    text: "id1 的 id11 第3层",
+                                },
+                            ]
+                        }, {
+                            id: 12,
+                            text: "id1 的 第二层",
+                            contentArrs: [
+                                {
+                                    id: 121,
+                                    text: "id1 的 id12 第3层",
+                                }, {
+                                    id: 122,
+                                    text: "id1 的 id12 第3层",
+                                }, {
+                                    id: 123,
+                                    text: "id1 的 id12 第3层",
+                                },
+                            ]
+                        }
+                    ]
+
+                }, {
+                    id: 2,
+                    text: 2222,
+                    contentArrs: [
+                        {
+                            id: 13,
+                            text: "id2 的 第二层",
+                            contentArrs: [
+                                {
+                                    id: 131,
+                                    text: "id2 的 id13 第3层",
+                                }, {
+                                    id: 132,
+                                    text: "id2 的 id13 第3层",
+                                }, {
+                                    id: 133,
+                                    text: "id2 的 id13 第3层",
+                                },
+                            ]
+                        }, {
+                            id: 14,
+                            text: "id2 的 第二层",
+                        }, {
+                            id: 15,
+                            text: "id2 的 第二层",
+                        },
+                    ]
+                },
+            ],
+
+            arrs2: [],
+            arrs3: [],
+        },
+        methods: {
+            showSon(_context) {
+                console.log(_context)
+                this.arrs2 = _context
+                this.showSonSon(_context[0].contentArrs) 
+            },
+            showSonSon(_context) {
+                console.log("l3->",_context)
+                this.arrs3 = _context
+            }
+        }
+
+    })
+</script>
+
+</html>
